@@ -1,1 +1,178 @@
+/* --- 1. RESET & DASAR --- */
+* {
+    margin: 0; /* Menghapus jarak bawaan browser di semua sisi */
+    padding: 0; /* Menghapus ruang dalam bawaan browser */
+    box-sizing: border-box; /* Memastikan padding tidak menambah lebar elemen */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font modern & bersih */
+}
 
+body {
+    background-color: #fff5f7; /* Latar belakang putih dengan sedikit rona pink (soft) */
+    color: #333; /* Warna teks utama abu-abu gelap agar nyaman dibaca */
+    line-height: 1.6; /* Memberi ruang antar baris teks agar tidak sesak */
+}
+
+/* --- 2. NAVIGASI --- */
+nav {
+    background-color: #ffffff; /* Warna latar navigasi putih bersih */
+    display: flex; /* Mengaktifkan mode flexbox */
+    justify-content: space-between; /* Logo di kiri, menu di kanan */
+    align-items: center; /* Menyejajarkan item secara vertikal di tengah */
+    padding: 1rem 10%; /* Jarak atas-bawah 1rem, kiri-kanan 10% agar rapi */
+    box-shadow: 0 2px 10px rgba(255, 182, 193, 0.3); /* Bayangan lembut berwarna pink */
+    position: sticky; /* Menu tetap muncul di atas saat di-scroll */
+    top: 0;
+    z-index: 1000; /* Memastikan navigasi selalu di atas elemen lain */
+}
+
+nav .logo {
+    color: #ff4d94; /* Warna pink cerah untuk logo */
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex; /* Menu berderet ke samping */
+    list-style: none; /* Menghilangkan tanda titik (bullet) */
+}
+
+nav ul li {
+    margin-left: 25px; /* Jarak antar link menu */
+}
+
+nav ul li a {
+    text-decoration: none; /* Menghilangkan garis bawah pada link */
+    color: #ff85a2; /* Warna link pink pastel */
+    font-weight: 500;
+    transition: 0.3s; /* Efek halus saat kursor menyentuh link */
+}
+
+nav ul li a:hover {
+    color: #ff4d94; /* Warna berubah jadi pink tua saat di-hover */
+}
+
+/* --- 3. HERO SECTION (BERANDA) --- */
+.hero {
+    height: 80vh; /* Tinggi 80% dari layar laptop */
+    display: flex;
+    flex-direction: column; /* Menyusun teks ke bawah */
+    justify-content: center; /* Teks di tengah secara vertikal */
+    align-items: center; /* Teks di tengah secara horizontal */
+    text-align: center;
+    background: linear-gradient(135deg, #ff85a2 0%, #ffb6c1 100%); /* Gradasi pink cantik */
+    color: white; /* Teks di area hero berwarna putih */
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+/* --- 4. BAGIAN UMUM (SECTION) --- */
+section {
+    padding: 60px 10%; /* Jarak antar bagian agar tidak menempel */
+}
+
+h2 {
+    text-align: center;
+    color: #ff4d94;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    position: relative;
+}
+
+h2::after { /* Dekorasi garis bawah di bawah judul */
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #ff85a2;
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* --- 5. ANGGOTA KELOMPOK (KARTU) --- */
+.anggota-container {
+    display: grid; /* Menggunakan Grid untuk tata letak kolom */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Otomatis menyesuaikan jumlah kolom */
+    gap: 25px; /* Jarak antar kartu */
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px; /* Sudut membulat modern */
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Bayangan tipis agar elegan */
+    border: 1px solid #ffe4e9; /* Garis tepi pink sangat muda */
+    transition: transform 0.3s; /* Efek animasi saat kartu di-hover */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Kartu sedikit naik saat disentuh mouse */
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Membuat foto anggota berbentuk lingkaran */
+    margin-bottom: 15px;
+    border: 3px solid #ffb6c1;
+}
+
+/* --- 6. MAKALAH & DOKUMENTASI --- */
+.content-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Rasio 16:9 untuk video YouTube/Lokal */
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- 7. FOOTER --- */
+footer {
+    background-color: #ffffff;
+    padding: 40px 10%;
+    text-align: center;
+    border-top: 5px solid #ffb6c1;
+    color: #ff85a2;
+}
+
+/* Tombol (Opsional jika ada) */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #ff4d94;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff1a75;
+}
