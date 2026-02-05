@@ -1,178 +1,232 @@
-/* --- 1. RESET & DASAR --- */
+/* --- 1. SETTING FONT & VARIABEL --- */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+  --sweet-pink: #fce4ec;    /* Pink dasar yang sangat lembut */
+  --accent-pink: #ff80ab;   /* Pink cerah untuk aksen tombol/hover */
+  --deep-pink: #f06292;     /* Pink tua untuk teks penting */
+  --pure-white: #ffffff;    /* Putih bersih */
+  --shadow: 0 8px 20px rgba(255, 182, 193, 0.2); /* Bayangan pink halus */
+}
+
+/* --- 2. RESET & CUSTOM CURSOR --- */
 * {
-    margin: 0; /* Menghapus jarak bawaan browser di semua sisi */
-    padding: 0; /* Menghapus ruang dalam bawaan browser */
-    box-sizing: border-box; /* Memastikan padding tidak menambah lebar elemen */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font modern & bersih */
+  margin: 0;                /* Menghapus margin bawaan browser */
+  padding: 0;               /* Menghapus padding bawaan browser */
+  box-sizing: border-box;   /* Ukuran elemen dihitung termasuk padding/border */
+  /* Cursor Pita Coquette Pink */
+  cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym49.cur'), auto;
 }
 
 body {
-    background-color: #fff5f7; /* Latar belakang putih dengan sedikit rona pink (soft) */
-    color: #333; /* Warna teks utama abu-abu gelap agar nyaman dibaca */
-    line-height: 1.6; /* Memberi ruang antar baris teks agar tidak sesak */
+  font-family: 'Poppins', sans-serif; /* Font utama yang bersih & modern */
+  background-color: var(--pure-white);
+  color: #444;              /* Warna teks abu gelap agar nyaman dibaca */
+  overflow-x: hidden;       /* Mencegah scroll ke samping */
+  scroll-behavior: smooth;  /* Efek scroll halus saat klik menu navigasi */
 }
 
-/* --- 2. NAVIGASI --- */
+/* --- 3. NAVIGASI (SLIM & RAPI) --- */
+header {
+  background: rgba(255, 255, 255, 0.9); /* Putih transparan */
+  backdrop-filter: blur(10px);          /* Efek kaca di belakang nav */
+  padding: 15px 8%;                     /* Ruang dalam navigasi */
+  position: fixed;                      /* Tetap di atas saat di-scroll */
+  width: 100%;                          /* Memenuhi lebar layar */
+  top: 0;
+  z-index: 2000;                        /* Berada di lapisan paling atas */
+  border-bottom: 2px dashed var(--accent-pink); /* Detail renda putus-putus */
+}
+
 nav {
-    background-color: #ffffff; /* Warna latar navigasi putih bersih */
-    display: flex; /* Mengaktifkan mode flexbox */
-    justify-content: space-between; /* Logo di kiri, menu di kanan */
-    align-items: center; /* Menyejajarkan item secara vertikal di tengah */
-    padding: 1rem 10%; /* Jarak atas-bawah 1rem, kiri-kanan 10% agar rapi */
-    box-shadow: 0 2px 10px rgba(255, 182, 193, 0.3); /* Bayangan lembut berwarna pink */
-    position: sticky; /* Menu tetap muncul di atas saat di-scroll */
-    top: 0;
-    z-index: 1000; /* Memastikan navigasi selalu di atas elemen lain */
+  display: flex;                        /* Mengatur logo & menu berjajar horizontal */
+  justify-content: space-between;       /* Logo kiri, menu kanan */
+  align-items: center;                  /* Rata tengah secara vertikal */
 }
 
-nav .logo {
-    color: #ff4d94; /* Warna pink cerah untuk logo */
-    font-size: 1.5rem;
-    font-weight: bold;
+.logo {
+  font-family: 'Dancing Script', cursive; /* Font estetik untuk logo */
+  font-size: 1.8rem;
+  color: var(--deep-pink);
 }
 
-nav ul {
-    display: flex; /* Menu berderet ke samping */
-    list-style: none; /* Menghilangkan tanda titik (bullet) */
+.logo span {
+  color: #ffb7c5;                       /* Warna pemanis untuk kata kedua logo */
 }
 
-nav ul li {
-    margin-left: 25px; /* Jarak antar link menu */
+.nav-links {
+  display: flex;                        /* Menu berjajar horizontal */
+  list-style: none;                     /* Menghilangkan titik-titik list */
 }
 
-nav ul li a {
-    text-decoration: none; /* Menghilangkan garis bawah pada link */
-    color: #ff85a2; /* Warna link pink pastel */
-    font-weight: 500;
-    transition: 0.3s; /* Efek halus saat kursor menyentuh link */
+.nav-links li {
+  margin-left: 25px;                    /* Jarak antar menu */
 }
 
-nav ul li a:hover {
-    color: #ff4d94; /* Warna berubah jadi pink tua saat di-hover */
+.nav-links a {
+  text-decoration: none;                /* Menghilangkan garis bawah link */
+  color: #666;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: 0.3s;                     /* Efek transisi halus */
 }
 
-/* --- 3. HERO SECTION (BERANDA) --- */
-.hero {
-    height: 80vh; /* Tinggi 80% dari layar laptop */
-    display: flex;
-    flex-direction: column; /* Menyusun teks ke bawah */
-    justify-content: center; /* Teks di tengah secara vertikal */
-    align-items: center; /* Teks di tengah secara horizontal */
-    text-align: center;
-    background: linear-gradient(135deg, #ff85a2 0%, #ffb6c1 100%); /* Gradasi pink cantik */
-    color: white; /* Teks di area hero berwarna putih */
-    padding: 0 20px;
+.nav-links a:hover {
+  color: var(--deep-pink);              /* Berubah warna saat kursor mendekat */
+  letter-spacing: 1px;                  /* Sedikit melebar agar estetik */
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
+/* --- 4. HERO SECTION (PUSAT PERHATIAN) --- */
+.hero-kelompok {
+  height: 80vh;                         /* Tinggi 80% layar */
+  background: linear-gradient(135deg, var(--sweet-pink) 0%, white 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;                   /* Untuk posisi hiasan pita */
+  padding-top: 80px;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    max-width: 600px;
+.hero-overlay h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 4.5rem;
+  color: var(--deep-pink);
+  margin-bottom: 10px;
 }
 
-/* --- 4. BAGIAN UMUM (SECTION) --- */
-section {
-    padding: 60px 10%; /* Jarak antar bagian agar tidak menempel */
+/* Animasi Boneka & Pita Pixel */
+.hero-kelompok::before {
+  content: '🎀';                        /* Hiasan pita */
+  position: absolute;
+  top: 20%; left: 10%;
+  font-size: 50px;
+  animation: floating 3s infinite ease-in-out;
 }
 
-h2 {
-    text-align: center;
-    color: #ff4d94;
-    margin-bottom: 40px;
-    font-size: 2rem;
-    position: relative;
+.hero-kelompok::after {
+  content: '🧸';                        /* Hiasan boneka pixel art style */
+  position: absolute;
+  bottom: 20%; right: 10%;
+  font-size: 50px;
+  animation: floating 3s infinite ease-in-out 1.5s;
 }
 
-h2::after { /* Dekorasi garis bawah di bawah judul */
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: #ff85a2;
-    margin: 10px auto;
-    border-radius: 2px;
+@keyframes floating {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-15px) rotate(5deg); }
 }
 
-/* --- 5. ANGGOTA KELOMPOK (KARTU) --- */
-.anggota-container {
-    display: grid; /* Menggunakan Grid untuk tata letak kolom */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Otomatis menyesuaikan jumlah kolom */
-    gap: 25px; /* Jarak antar kartu */
+.btn-cek {
+  display: inline-block;
+  padding: 12px 30px;
+  background: var(--deep-pink);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(240, 98, 146, 0.3);
+  transition: 0.3s;
 }
 
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 15px; /* Sudut membulat modern */
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Bayangan tipis agar elegan */
-    border: 1px solid #ffe4e9; /* Garis tepi pink sangat muda */
-    transition: transform 0.3s; /* Efek animasi saat kartu di-hover */
+.btn-cek:hover {
+  transform: scale(1.05);               /* Membesar sedikit saat di-hover */
+  background: var(--accent-pink);
 }
 
-.card:hover {
-    transform: translateY(-10px); /* Kartu sedikit naik saat disentuh mouse */
+/* --- 5. GRID ANGGOTA (RAPIIII & SERAGAM) --- */
+.section-container {
+  padding: 80px 10%;                    /* Ruang section secara umum */
 }
 
-.card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%; /* Membuat foto anggota berbentuk lingkaran */
-    margin-bottom: 15px;
-    border: 3px solid #ffb6c1;
+.section-title {
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  color: var(--deep-pink);
+  margin-bottom: 50px;
 }
 
-/* --- 6. MAKALAH & DOKUMENTASI --- */
-.content-box {
-    background: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    margin-bottom: 30px;
+.bg-light { background-color: var(--sweet-pink); }
+
+.kelompok-grid {
+  display: grid;                        /* Sistem grid modern */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsif otomatis */
+  gap: 30px;                            /* Jarak antar kartu anggota */
 }
 
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* Rasio 16:9 untuk video YouTube/Lokal */
-    height: 0;
-    overflow: hidden;
-    border-radius: 15px;
-    background: #000;
+.kelompok-card {
+  background: white;
+  border-radius: 25px;                  /* Sudut membulat imut */
+  overflow: hidden;                     /* Mencegah gambar meluap keluar kartu */
+  text-decoration: none;
+  color: inherit;
+  border: 2px solid white;
+  transition: 0.4s ease;
+  box-shadow: var(--shadow);
 }
 
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
+/* AGAR FOTO ANGGOTA TIDAK KEDE-GEDEAN/KEKECILAN */
+.card-img img {
+  width: 100%;                          /* Lebar mengikuti kartu */
+  height: 250px;                        /* TINGGI DIKUNCI AGAR RAPI SEJAJAR */
+  object-fit: cover;                    /* Foto dipotong otomatis agar proporsional */
+  border-bottom: 2px dashed var(--sweet-pink);
+}
+
+.card-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-info h3 {
+  font-size: 1.1rem;
+  color: var(--deep-pink);
+}
+
+.kelompok-card:hover {
+  transform: translateY(-10px);         /* Kartu naik ke atas saat di-hover */
+  border-color: var(--accent-pink);
+}
+
+/* --- 6. MAKALAH & VIDEO (KONTEN BESAR) --- */
+.content-wrapper, .video-wrapper {
+  max-width: 900px;                     /* Membatasi lebar agar tidak meluas di laptop */
+  margin: 0 auto;                       /* Posisi di tengah layar */
+  background: white;
+  padding: 20px;
+  border-radius: 30px;
+  border: 5px double var(--sweet-pink); /* Bingkai ganda estetik */
+}
+
+.pdf-container, .video-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;                 /* Mengunci rasio video/PDF agar pas di mata */
+  border-radius: 15px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.content-desc, .video-desc {
+  padding: 20px;
+  text-align: center;
 }
 
 /* --- 7. FOOTER --- */
 footer {
-    background-color: #ffffff;
-    padding: 40px 10%;
-    text-align: center;
-    border-top: 5px solid #ffb6c1;
-    color: #ff85a2;
+  text-align: center;
+  padding: 40px;
+  background: var(--sweet-pink);
+  border-top: 3px dotted white;         /* Garis bintik seperti jahitan kain */
+  color: var(--deep-pink);
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
-/* Tombol (Opsional jika ada) */
-.btn {
-    display: inline-block;
-    padding: 10px 25px;
-    background-color: #ff4d94;
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    margin-top: 20px;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background-color: #ff1a75;
+/* --- 8. RESPONSIVE UNTUK LAYAR KECIL --- */
+@media (max-width: 768px) {
+  header { padding: 15px 5%; }
+  .hero-kelompok::before, .hero-kelompok::after { display: none; } /* Hapus hiasan di HP */
+  .hero-overlay h1 { font-size: 3rem; }
+  .section-container { padding: 50px 5%; }
 }
