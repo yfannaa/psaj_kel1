@@ -1,41 +1,43 @@
-/* --- 1. SETTING FONT & VARIABEL --- */
+/* --- 1. IMPORT FONT & VARIABEL --- */
+/* Menggunakan font Poppins untuk kesan bersih dan Dancing Script untuk vibes coquette */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
 
 :root {
-  --sweet-pink: #fce4ec;    /* Pink dasar lembut */
-  --accent-pink: #ff80ab;   /* Pink cerah untuk aksen */
-  --deep-pink: #f06292;     /* Pink tua untuk teks utama */
-  --pure-white: #ffffff;
-  --max-width-content: 800px; /* Batas lebar video & makalah agar tidak kegedean */
+  --main-pink: #fce4ec;    /* Pink dasar lembut */
+  --dark-pink: #f06292;    /* Pink tua untuk teks/tombol */
+  --accent-pink: #ff80ab;  /* Pink cerah untuk hover */
+  --white: #ffffff;
+  --max-content: 900px;    /* Lebar maksimal untuk video/makalah agar tidak kegedean */
 }
 
-/* --- 2. RESET & CUSTOM CURSOR --- */
+/* --- 2. GLOBAL RESET & CURSOR --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* Kursor Pita Pink */
+  /* Custom Cursor Pita Pink Coquette */
   cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym49.cur'), auto;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--pure-white);
+  background-color: var(--white);
+  color: #444;
   line-height: 1.6;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
-/* --- 3. NAVIGASI (RAPI & SLIM) --- */
+/* --- 3. NAVIGASI (RAPI & STICKY) --- */
 header {
   background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); /* Efek blur di belakang nav */
   padding: 15px 10%;
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 2000;
-  border-bottom: 2px dashed var(--accent-pink); /* Detail renda jahitan */
+  z-index: 1000;
+  border-bottom: 2px dashed var(--accent-pink); /* Detail jahitan renda */
 }
 
 nav {
@@ -47,10 +49,10 @@ nav {
 .logo {
   font-family: 'Dancing Script', cursive;
   font-size: 1.8rem;
-  color: var(--deep-pink);
+  color: var(--dark-pink);
 }
 
-.logo span { color: #ffb7c5; }
+.logo span { color: var(--accent-pink); }
 
 .nav-links {
   display: flex;
@@ -61,18 +63,18 @@ nav {
 
 .nav-links a {
   text-decoration: none;
-  color: #555;
+  color: #666;
   font-weight: 600;
   font-size: 0.9rem;
   transition: 0.3s;
 }
 
-.nav-links a:hover { color: var(--deep-pink); }
+.nav-links a:hover { color: var(--dark-pink); }
 
-/* --- 4. HERO SECTION --- */
+/* --- 4. HERO SECTION (VIBES COQUETTE) --- */
 .hero-kelompok {
   height: 80vh;
-  background: linear-gradient(135deg, var(--sweet-pink) 0%, white 100%);
+  background: linear-gradient(135deg, var(--main-pink) 0%, white 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,9 +83,9 @@ nav {
   padding-top: 80px;
 }
 
-/* Animasi Boneka & Pita */
-.hero-kelompok::before { content: '🎀'; position: absolute; top: 20%; left: 10%; font-size: 45px; animation: float 3s infinite ease-in-out; }
-.hero-kelompok::after { content: '🧸'; position: absolute; bottom: 20%; right: 10%; font-size: 45px; animation: float 3s infinite ease-in-out 1.5s; }
+/* Animasi Pita & Boneka Pixel */
+.hero-kelompok::before { content: '🎀'; position: absolute; top: 20%; left: 10%; font-size: 40px; animation: float 3s infinite ease-in-out; }
+.hero-kelompok::after { content: '🧸'; position: absolute; bottom: 20%; right: 10%; font-size: 40px; animation: float 3s infinite ease-in-out 1.5s; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
@@ -93,27 +95,31 @@ nav {
 .hero-overlay h1 {
   font-family: 'Dancing Script', cursive;
   font-size: 4rem;
-  color: var(--deep-pink);
+  color: var(--dark-pink);
 }
 
 .btn-cek {
   display: inline-block;
   padding: 10px 30px;
-  background: var(--deep-pink);
+  background: var(--dark-pink);
   color: white;
   text-decoration: none;
   border-radius: 50px;
   font-weight: bold;
   transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(240, 98, 146, 0.3);
 }
 
-/* --- 5. GRID ANGGOTA (SERAGAM) --- */
+.btn-cek:hover { transform: scale(1.05); background: var(--accent-pink); }
+
+/* --- 5. ANGGOTA GRID (KARTU SERAGAM & RAPI) --- */
 .section-container { padding: 80px 10%; }
-.section-title { text-align: center; font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--deep-pink); margin-bottom: 40px; }
-.bg-light { background-color: var(--sweet-pink); }
+.section-title { text-align: center; font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--dark-pink); margin-bottom: 40px; }
+.bg-light { background-color: var(--main-pink); }
 
 .kelompok-grid {
   display: grid;
+  /* Kartu sejajar, maksimal 3 kolom di laptop */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
 }
@@ -126,43 +132,42 @@ nav {
   color: inherit;
   transition: 0.3s;
   box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  border: 2px solid transparent;
 }
 
+.kelompok-card:hover { transform: translateY(-10px); border-color: var(--main-pink); }
+
+/* Kontrol Gambar Anggota: Biar Tidak Kede-gedean */
 .card-img img {
   width: 100%;
-  height: 300px; /* Tinggi foto anggota pas */
-  object-fit: cover;
+  height: 250px; /* Tinggi seragam agar kartu sejajar lurus */
+  object-fit: cover; /* Foto dipotong rapi secara otomatis */
 }
 
 .card-info { padding: 20px; text-align: center; }
-.kelompok-card:hover { transform: translateY(-10px); }
 
-/* --- 6. FIX MAKALAH & VIDEO (TENGAH & PAS) --- */
-
-/* Container Utama Laporan & Video */
+/* --- 6. FIX LAYOUT VIDEO & MAKALAH (TENGAH & PAS) --- */
 .content-wrapper, .video-wrapper {
-  max-width: var(--max-width-content); /* Ukuran tidak kegedean di laptop */
-  margin: 0 auto;                       /* MEMBUAT KE TENGAH */
+  max-width: var(--max-content); /* Lebar dikunci agar tidak memenuhi layar laptop */
+  margin: 0 auto;               /* INI KUNCINYA AGAR DI TENGAH */
   background: white;
-  padding: 25px;
+  padding: 20px;
   border-radius: 30px;
-  border: 4px double var(--sweet-pink); /* Bingkai estetik */
-  box-shadow: 0 15px 30px rgba(255, 182, 193, 0.2);
+  border: 5px double var(--main-pink); /* Bingkai estetik */
   display: flex;
   flex-direction: column;
-  align-items: center;                  /* Isi di dalamnya ke tengah */
+  align-items: center;          /* Isi konten ke tengah */
 }
 
-/* Frame Video & PDF */
 .pdf-container, .video-container {
-  width: 100%;                          /* Mengikuti lebar wrapper */
-  aspect-ratio: 16 / 9;                 /* Rasio layar standar (Tidak Kepanjangan) */
-  border-radius: 20px;
+  width: 100%;                  /* Lebar 100% dari wrapper */
+  aspect-ratio: 16 / 9;         /* Rasio standar video (Tidak Gepeng) */
+  border-radius: 15px;
   overflow: hidden;
-  position: relative;
+  background: #fdf2f5;
 }
 
-/* Memastikan iframe mengisi frame dengan pas */
+/* Memastikan frame video/PDF pas di dalam kotak */
 iframe {
   width: 100%;
   height: 100%;
@@ -178,14 +183,15 @@ iframe {
 footer {
   text-align: center;
   padding: 40px;
-  background: var(--sweet-pink);
-  color: var(--deep-pink);
+  background: var(--main-pink);
+  color: var(--dark-pink);
   font-weight: 600;
   border-top: 2px dashed white;
 }
 
-/* --- RESPONSIVE --- */
+/* --- 8. RESPONSIVE --- */
 @media (max-width: 768px) {
+  header { padding: 15px 5%; }
   .hero-overlay h1 { font-size: 2.5rem; }
-  .section-container { padding: 50px 5%; }
+  .section-container { padding: 60px 5%; }
 }
